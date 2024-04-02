@@ -1,10 +1,13 @@
-// # 31:42
+// #31 38:40
+// check avatarUpload
 // external imports
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const usersRouter = require("./router/usersRouter");
+const inboxRouter = require("./router/inboxRouter");
 
 // internal imports
 const {
@@ -41,8 +44,8 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // routing setup
 app.use("/", loginRouter);
-// app.use("/users", usersRouter);
-// app.use("/inbox", inboxRouter);
+app.use("/users", usersRouter);
+app.use("/inbox", inboxRouter);
 
 // 404 not found handler
 app.use(notFoundHandler);
